@@ -13,6 +13,7 @@ function setCardFlag(flag) {
   const colors = {
     visa: ["#4C66FF", "#00FFF0"],
     mastercard: ["#E59966", "#FFCC7F"],
+    americanexpress: ["#A87B05", "#F9DB5C"],
     default: ["black", "gray"],
   };
   creditCardBgColor01.setAttribute("fill", colors[flag][0]);
@@ -63,6 +64,12 @@ const cardNumberPattern = {
 
     {
       mask: "0000 0000 0000 0000",
+      regex: /(^3[47][0-9])\d{0,12}$/,
+      cardflag: "americanexpress",
+    },
+
+    {
+      mask: "0000 0000 0000 0000",
       cardflag: "default",
     },
   ],
@@ -96,7 +103,7 @@ cardHolderInput.addEventListener("input", () => {
 
   creditCardHolder.innerText =
     cardHolderInput.value.length === 0
-      ? "SEU NOME E SOBRENOME"
+      ? "NOME E SOBRENOME"
       : cardHolderInput.value;
 });
 
